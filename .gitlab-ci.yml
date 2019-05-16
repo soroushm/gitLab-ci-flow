@@ -1,0 +1,16 @@
+image: gitlab/dind
+
+services:
+  - docker:dind
+
+stages:
+  - build
+  - push
+build:
+  stage: build
+  script:
+    - docker build -t soroushm/gitlab-ci-react:latest .
+push:
+  stage: push
+  script:
+    - docker push soroushm/gitlab-ci-react
