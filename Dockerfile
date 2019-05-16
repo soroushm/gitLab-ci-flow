@@ -3,7 +3,16 @@ MAINTAINER Masoud Soroush <masoud.s.geo@gmail.com>
 
 
 RUN apt-get -qq update
-RUN apt-get install -qqy --no-install-recommends apt-utils git-core docker.io
+RUN echo "Installing Dependency..." && apt-get install -qqy --no-install-recommends\
+ curl\
+ apt-utils\
+ git-core\
+ docker.io \
+ npm\
+ nodejs
+RUN echo "Installing Yarn..." && npm install -g yarn
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN git --version
+RUN echo "Git Version" && git --version
+RUN echo "yarn Version" && yarn --version
+RUN echo "Docker Version" && docker --version
 
